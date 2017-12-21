@@ -108,14 +108,20 @@
 // arr[0] = 5000;
 // arr[1] = 4000;
 
-// // // 拷贝 `arr` 的内容
+// console.log(arr.buffer); // ArrayBuffer { byteLength: 4 }
+
+// // 拷贝 `arr` 的内容
 // const buf1 = Buffer.from(arr);
 
-// // 输出: ArrayBuffer { byteLength: 8192 }
-// console.log(buf1.buffer);
+// console.log(buf1.buffer); // 输出: ArrayBuffer { byteLength: 8192 }
+// console.log(buf1.length); // 输出: 2
+// console.log(buf1.byteLength); // 输出: 2
 
 // // 与 `arr` 共享内存
 // const buf2 = Buffer.from(arr.buffer);
+
+// console.log(buf2.buffer); // 输出: ArrayBuffer { byteLength: 4 }
+// console.log(buf2.length); // 输出: 4
 
 // // 输出: <Buffer 88 a0>
 // console.log(buf1);
@@ -162,4 +168,165 @@
 // console.log(Buffer.from(new Foo(), 'utf8'));
 
 // ==================
+// const buffer = new ArrayBuffer(24);
 
+// const idView = new Uint32Array(buffer, 0, 1);
+// const usernameView = new Uint8Array(buffer, 4, 16);
+
+// console.log(idView.buffer === usernameView.buffer); // true
+
+// ===================
+// const buf = Buffer.from('buf');
+
+// for (const pair of buf.keys()) {
+//   console.log(pair);
+// }
+// /* 输出：
+//   0
+//   1
+//   2
+// */
+
+// for (const pair of buf.values()) {
+//   console.log(pair);
+// }
+//  输出：
+//   98
+//   117
+//   102
+
+
+// console.log(buf.entries()); // {}
+// for (const pair of buf.entries()) {
+//   console.log(Array.isArray(pair)); // true
+//   console.log(pair);
+// }
+// /* 输出：
+//   [ 0, 98 ]
+//   [ 1, 117 ]
+//   [ 2, 102 ]
+// */
+
+// ================
+// const buf1 = Buffer.from('ABC');
+// const buf2 = Buffer.from('414243', 'hex');
+// const buf3 = Buffer.from('ABCD');
+
+// // 输出: true
+// console.log(buf1.equals(buf2));
+
+// // 输出: false
+// console.log(buf1.equals(buf3));
+
+// ===============
+// console.log(Buffer.allocUnsafe(3).fill('\u0222'));
+
+// const buf = Buffer.allocUnsafe(5);
+
+// console.log(buf);
+
+// const back = buf.fill('a');
+
+// console.log(buf);
+// console.log(back);
+
+/* 输出：
+  <Buffer c8 a2 c8>
+  <Buffer 80 6e 1c 00 00>
+  <Buffer 61 61 61 61 61>
+  <Buffer 61 61 61 61 61>
+*/
+
+// ===============
+// const buf = Buffer.alloc(10);
+// console.log(buf); // <Buffer 00 00 00 00 00 00 00 00 00 00>
+
+// const buf1 = buf.slice(2, 4);
+// console.log(buf1); // <Buffer 00 00>
+
+// buf1[0] = 12;
+
+// console.log(buf); // <Buffer 00 00 0c 00 00 00 00 00 00 00>
+// console.log(buf1); // <Buffer 0c 00>（都被修改了说明是共享内存）
+
+// ===============
+// const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
+// console.log(buf1); // <Buffer 01 02 03 04 05 06 07 08>
+
+// buf1.swap16();
+// console.log(buf1); // <Buffer 02 01 04 03 06 05 08 07>
+// buf1.swap16();
+
+// buf1.swap32();
+// console.log(buf1); // <Buffer 04 03 02 01 08 07 06 05>
+// buf1.swap32();
+
+// buf1.swap64();
+// console.log(buf1); // <Buffer 08 07 06 05 04 03 02 01>
+// buf1.swap64();
+
+// const buf2 = Buffer.from([0x1, 0x2, 0x3]);
+// buf2.swap16(); // RangeError: Buffer size must be a multiple of 16-bits
+
+// ====================
+// // const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
+// const buf = Buffer.from('abcde');
+
+// const json = JSON.stringify(buf);
+// const json1 = buf.toJSON();
+
+// console.log(json); // {"type":"Buffer","data":[1,2,3,4,5]} / {"type":"Buffer","data":[97,98,99,100,101]}
+// console.log(json1); // { type: 'Buffer', data: [ 1, 2, 3, 4, 5 ] } / { type: 'Buffer', data: [ 97, 98, 99, 100, 101 ] }
+
+// console.log(JSON.parse(json));// { type: 'Buffer', data: [ 1, 2, 3, 4, 5 ] } / { type: 'Buffer', data: [ 97, 98, 99, 100, 101 ] }
+
+// console.log(Buffer.from(JSON.parse(json).data)); // <Buffer 01 02 03 04 05> / <Buffer 61 62 63 64 65>
+
+// ====================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // 当前页面
+// const obj = { a: 'as', b: { c: 'asd'} };
+
+// window.sessionStorage.setItem('obj', JSON.stringify(obj));
+
+// // 另一页面
+// const obj1 = JSON.parse(window.sessionStorage.getItem('obj'));
+
+// console.log(obj1);
