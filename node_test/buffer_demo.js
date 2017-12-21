@@ -283,15 +283,62 @@
 // console.log(Buffer.from(JSON.parse(json).data)); // <Buffer 01 02 03 04 05> / <Buffer 61 62 63 64 65>
 
 // ====================
+// const buffer = require('buffer');
+// console.log(buffer.INSPECT_MAX_BYTES); // 输出：50
+// console.log(buffer.kMaxLength); // 输出：2147483647
+// console.log(buffer.kStringMaxLength); // 268435440
+// console.log(buffer);
+/* 输出：
+{ Buffer:
+   { [Function: Buffer]
+     poolSize: 8192,
+     from: [Function],
+     alloc: [Function],
+     allocUnsafe: [Function],
+     allocUnsafeSlow: [Function],
+     isBuffer: [Function: isBuffer],
+     compare: [Function: compare],
+     isEncoding: [Function],
+     concat: [Function],
+     byteLength: [Function: byteLength],
+     [Symbol(node.isEncoding)]: [Function] },
+  SlowBuffer: [Function: SlowBuffer],
+  INSPECT_MAX_BYTES: 50,
+  kMaxLength: 2147483647,
+  constants: { MAX_LENGTH: 2147483647, MAX_STRING_LENGTH: 268435440 },
+  kStringMaxLength: 268435440,
+  transcode: [Function: transcode] }
+*/
+// console.log(buffer.constants); // 输出：{ MAX_LENGTH: 2147483647, MAX_STRING_LENGTH: 268435440 }
 
+// const newBuf = buffer.transcode(Buffer.from('€'), 'utf8', 'ascii');
+// console.log(newBuf.toString('ascii'));
+// // 输出：?  因为欧元符号（€）不能在 US-ASCII 中表示，所以在转换 Buffer 的时候使用 ? 代替。
 
+// ================
+// const buf = Buffer.allocUnsafe(8);
 
+// buf.writeInt32BE(0x01020304, 0);
 
+// // 输出: <Buffer 01 02 03 04 20 02 00 00>
+// console.log(buf);
 
+// buf.writeInt32LE(0x05060708, 4);
 
+// // 输出: <Buffer 01 02 03 04 08 07 06 05>
+// console.log(buf);
 
+const buf = Buffer.allocUnsafe(7);
 
+buf.writeIntBE(0x1234567890ab, 0, 5);
 
+// 输出: <Buffer 12 34 56 78 90 ab>
+console.log(buf);
+
+buf.writeIntLE(0x1234567890ab, 0, 5);
+
+// 输出: <Buffer ab 90 78 56 34 12>
+console.log(buf);
 
 
 
