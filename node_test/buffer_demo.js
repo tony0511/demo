@@ -328,17 +328,17 @@
 // // 输出: <Buffer 01 02 03 04 08 07 06 05>
 // console.log(buf);
 
-const buf = Buffer.allocUnsafe(7);
+// const buf = Buffer.allocUnsafe(7);
 
-buf.writeIntBE(0x1234567890ab, 0, 5);
+// buf.writeIntBE(0x1234567890ab, 0, 6);
 
-// 输出: <Buffer 12 34 56 78 90 ab>
-console.log(buf);
+// // 输出: <Buffer 12 34 56 78 90 ab>
+// console.log(buf);
 
-buf.writeIntLE(0x1234567890ab, 0, 5);
+// buf.writeIntLE(0x1234567890ab, 0, 6);
 
-// 输出: <Buffer ab 90 78 56 34 12>
-console.log(buf);
+// // 输出: <Buffer ab 90 78 56 34 12>
+// console.log(buf);
 
 
 
