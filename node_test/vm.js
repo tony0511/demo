@@ -18,38 +18,44 @@ const util = require('util');
 //   count: 2
 // };
 
-// const script = new vm.Script('count += 1; name = "kitty";');
+// debugger;
+
+// const script = new vm.Script('count += 1; name = "kitty"; console.log("global==", global)');
 
 // const context = vm.createContext(sandbox);
-// for (let i = 0; i < 10; ++i) {
+// for (let i = 0; i < 2; ++i) {
 //   script.runInContext(context);
 // }
 
 // console.log(util.inspect(sandbox));
 
-// // { animal: 'cat', count: 12, name: 'kitty' }
+// // global==  undefined
+// // { animal: 'cat', count: 4, name: 'kitty' }
 
 // ==================
-// const script = new vm.Script('globalVar = "set"');
+// const script = new vm.Script('globalVar = "set"; "global==", global)');
 
-// const sandboxes = [{}, {}, {}];
+// const sandboxes = [{}, {}];
 // sandboxes.forEach((sandbox) => {
 //   script.runInNewContext(sandbox);
 // });
 
 // console.log(util.inspect(sandboxes));
 
-// // [{ globalVar: 'set' }, { globalVar: 'set' }, { globalVar: 'set' }]
+// // global==  undefined
+// // [{ globalVar: 'set' }, { globalVar: 'set' }]
 
 // ================
-global.globalVar = 0;
+// global.globalVar = 0;
+// console.log(globalVar); // 0
 
-const script = new vm.Script('globalVar += 1', { filename: 'myfile.vm' });
+// const script = new vm.Script('globalVar += 1; "global==", global)', { filename: 'myfile.vm' });
 
-for (let i = 0; i < 1000; ++i) {
-  script.runInThisContext();
-}
+// for (let i = 0; i < 1; ++i) {
+//   script.runInThisContext();
+// }
 
-console.log(globalVar);
+// console.log(globalVar);
 
-// 1000
+// // global== { console: [Getter], ... }
+// // 1
