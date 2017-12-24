@@ -2,9 +2,9 @@ const url = require('url');
 
 // console.log(url);
 
-var urlString = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash';
+// var urlString = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash';
 
-console.log(url.parse(urlString));
+// console.log(url.parse(urlString));
 
 /* 输出：
 Url {
@@ -23,14 +23,16 @@ Url {
 }
 */
 
-var urlObj = { 
-  protocol: 'http:',
-  slashes: true,
-  hostname: 'itbilu.com',
-  port: 80,
-  hash: '#hash',
-  search: '?query=string',
-  path: '/nodejs?query=string'
-};
+// var urlObj = { 
+//   protocol: 'http:',
+//   slashes: true,
+//   hostname: 'itbilu.com',
+//   port: 80,
+//   hash: '#hash',
+//   search: '?query=string',
+//   path: '/nodejs?query=string'
+// };
 
-console.log(url.format(urlObj)); // http://itbilu.com:80?query=string#hash
+// console.log(url.format(urlObj)); // http://itbilu.com:80?query=string#hash
+
+// ====================
