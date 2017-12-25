@@ -1,10 +1,11 @@
 const url = require('url');
+const URL = url.URL;
 
-// console.log(url);
+console.log(url);
 
-// var urlString = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash';
+var urlString = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash';
 
-// console.log(url.parse(urlString));
+console.log(url.parse(urlString));
 
 /* 输出：
 Url {
@@ -21,6 +22,24 @@ Url {
   query: 'query=string', // 查询对象参数部分（不包含?）
   hash: '#hash' // 锚点
 }
+*/
+
+console.log(new URL(urlString));
+
+/* 输出：
+URL {
+  href: 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash',
+  origin: 'http://host.com:8080',
+  protocol: 'http:',
+  username: 'user',
+  password: 'pass',
+  host: 'host.com:8080',
+  hostname: 'host.com',
+  port: '8080',
+  pathname: '/p/a/t/h',
+  search: '?query=string',
+  searchParams: URLSearchParams { 'query' => 'string' },
+  hash: '#hash' }
 */
 
 // var urlObj = { 
