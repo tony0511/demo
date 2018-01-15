@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="icon" sizes="16x16" href="/favicon.png">
 </head>
 <body>
   <button id="btn">打开</button>
+  <button onclick="(() => { console.log(this) })()">打印this</button>
 </body>
 <script type="text/javascript" >
   document.getElementById('btn').onclick = () => {

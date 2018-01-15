@@ -1,5 +1,5 @@
 console.assert(true, 'does nothing'); // 通过
-console.assert(false, 'Whoops %s', 'didn\'t work'); // 后面代码不会继续运行了
+// console.assert(false, 'Whoops %s', 'didn\'t work'); // 后面代码不会继续运行了
 // AssertionError: Whoops didn't work
 
 console.log('23-%s', 'string');
@@ -62,4 +62,7 @@ console.log('回到第一层');
   回到第二层
 回到第一层
 */
+
+const err = new Error('错误信息！');
+console.log(err.message, err.code, error.stack);
 

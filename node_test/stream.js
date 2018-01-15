@@ -75,7 +75,7 @@ error== Error: 流被摧毁了！
 const readStream = fs.createReadStream('abc.txt', 'utf-8');
 const writeStream = fs.createWriteStream('example.txt');
 
-readStream.setEncoding('utf8');
+// readStream.setEncoding('utf8');
 
 // readStream.on('data', function (chunk) {
 //     console.log(chunk); // fiykhgasytgawewe
@@ -101,19 +101,19 @@ readStream.setEncoding('utf8');
 // const pass = new PassThrough();
 // const writable = new Writable();
 
-// readStream.pipe(writeStream);
+readStream.pipe(writeStream);
 // readStream.unpipe(writeStream);
 // flowing 现在为 false
 
-readStream.on('data', (chunk) => { console.log('data==', chunk.toString()); });
+// readStream.on('data', (chunk) => { console.log('data==', chunk.toString()); });
 
-readStream.on('end', (data) => { console.log('end==', data); });
+// readStream.on('end', (data) => { console.log('end==', data); });
 
-readStream.on('error', (data) => { console.log('error==', data); });
+// readStream.on('error', (data) => { console.log('error==', data); });
 
-readStream.on('readable', (data) => { console.log('readable==', data); });
+// readStream.on('readable', (data) => { console.log('readable==', data); });
 
-writeStream.write('ok'); // 不会触发 'data' 事件
+// writeStream.write('ok'); // 不会触发 'data' 事件
 // readStream.resume(); // 只有被调用了才会触发 'data' 事件
 
 /* 输出：
@@ -121,3 +121,8 @@ writeStream.write('ok'); // 不会触发 'data' 事件
   readable== undefined
   end== undefined
 */
+
+readStream.on('end', (e) =>{
+  console.log('end===');
+  console.log(e);
+})
