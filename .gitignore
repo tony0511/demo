@@ -1,0 +1,17 @@
+.DS_Store
+**/node_modules/
+**/前端书籍/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.MP4
+*.mp3
+mm.txt
