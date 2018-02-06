@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    html,body{
+      margin: 0;
+      height: 100%;
+      position: relative;
+    }
+    .wrap{
+      width: 400px;
+      height: 600px;
+      margin: auto;
+    }
+    .div{
+      width: 100%;
+      /*height: 100vmax;*/
+      height: 0;
+      width: 100%;
+      /*padding-bottom: 100%;*/
+      background: red;
+      /*overflow: hidden;*/
+    }
+    .div:after {
+      content: '';
+      display: block;
+      margin-top: 100%; /* margin 百分比相对父元素宽度计算 */
+    }
+  </style>
+</head>
+<body>
+  <!-- <div class="wrap"> -->
+    <!-- <div class="div">div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div div </div> -->
+  <!-- </div> -->
+  <!-- <img src="./test12.jpG" alt=""> -->
+  <!-- <img src="./test.tif" alt=""> -->
+  <object width=800 height=1000 classid="CLSID:106E49CF-797A-11D2-81A2-00E02C015623" name="tiffObj"> 
+  图片加载失败，请先下载图片控件<a href="alternatiff-1.8.exe">点击下载</a> 
+    <param name="src" value="./test.tif"> 
+    <param name="negative" value="no"> 
+  </object>
+  <div id="data" data-server-name="node"></div>
+</body>
+<script type="text/javascript">
+  const oDiv = document.getElementById('data');
+  console.log(oDiv.dataset.serverName);
+
+  // const obj = {
+  //   a: 'asd',
+  //   b: { s: ['as', 'asd'] },
+  //   c() {
+  //     return () => { return 'sad' }
+  //   }
+  // };
+  // async function structuralClone(obj) {
+  //   return new Promise(resolve => {
+  //     const {port1, port2} = new MessageChannel();
+  //     port2.onmessage = ev => resolve(ev.data);
+  //     port1.postMessage(obj);
+  //   });
+  // }
+
+  // let clone = null;
+  // structuralClone(obj).then((data) => {
+  //   console.log('data', data);
+  //   clone = data;
+  //   console.log('clone==', clone);
+  // });
+
+</script>
+</html>

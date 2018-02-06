@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    #file{
+      background-color: red;
+      border: 1px solid yellow;
+    }
+    #button{
+      background-color: #179CD6;
+      border: 0px solid #179CD6;
+      border-radius: 4px;
+      color: #fff;
+      padding: 4px 8px;
+    }
+    .a-upload {
+        padding: 4px 10px;
+        height: 20px;
+        line-height: 20px;
+        position: relative;
+        cursor: pointer;
+        color: #888;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        display: inline-block;
+        *display: inline;
+        *zoom: 1
+    }
+
+    .a-upload  input {
+        position: absolute;
+        font-size: 100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer
+    }
+
+  .a-upload:hover {
+      color: #444;
+      background: #eee;
+      border-color: #ccc;
+      text-decoration: none
+  }
+  .file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+@font-face {
+  font-family: 'MyFont';
+  src: url('./Hum521l.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+.hello {
+  color: blue;
+  /*background-image: url('./edit.png');*/
+  font-family: 'MyFont';
+}
+
+  </style>
+</head>
+<body>
+  <input type="date" min="1" max="10">
+  <a href="javascript:;" class="a-upload">
+      <input type="file" name="" id="">点击这里上传文件
+  </a>
+
+<a href="javascript:;" class="file">选择文件
+    <input type="file" name="" id="">
+</a>
+  <input id="file" type="file">
+  <button id="button">按钮</button>
+<article id="article">
+  <h4>公园一日游</h4>
+  <time>2016.8.15 星期二</time>
+  <p>今天风和日丽，我和小红去了人民公园，玩了滑梯、打雪仗、划船，真是愉快的一天啊。</p>
+</article>
+<div class="hello">hello HELLO HOME WORK CONTACT JOIN US</div>
+<button id="copy">复制文章</button>
+<textarea style="width: 500px;height: 100px;" placeholder="试一试ctrl + v"></textarea>
+<script>
+  function copyArticle(event){
+    const range = document.createRange('15323774770');
+    // range.selectNode(document.getElementById('article'));
+    // console.log(range);
+    const selection = window.getSelection();
+    // console.log(selection);
+    if(selection.rangeCount > 0) selection.removeAllRanges();
+    selection.addRange(range);
+    
+    document.execCommand('copy');
+  }
+
+  document.getElementById('copy').addEventListener('click', copyArticle, false);
+
+  // const worker = new Worker('/dist/worker.js');
+  // const worker = new Worker('http://webapi.amap.com/maps?v=1.4.0&key=b9e3c4e4af643f5521a0ea2a1051b9ec&plugin=AMap.PolyEditor,AMap.Autocomplete,AMap.PlaceSearch');
+
+  // worker.onmessage = function (event){ //接收耗时操作文件返回的数据
+  //   console.log(event);
+  //   console.log(window.AMap);
+  // };
+
+  // window.setTimeout(() => {
+  //   // window.history.go(0);
+  //   window.location.reload(true);
+  //   window.document.write("历史列表中url数量：" + history.length + "<br/>");
+  //   document.write("height : " + screen.height + "<br/>");
+  //   document.write("width : " + screen.width + "<br/>");
+  //   document.write("colorDepth : " + screen.colorDepth + "<br/>");
+  //   document.write("availWidth : " + screen.availWidth + "<br/>");
+  //   document.write("availHeight " + screen.availHeight + "<br/>");
+  //   console.log(window.frames);
+  // }, 2000);
+
+  var buffer = new ArrayBuffer(2) // array buffer for two bytes
+
+  // 使用 Uint8Array
+  // var bytes = new Uint8Array(buffer) // views the buffer as an array of 8 bit integers
+  // bytes[0] = 65 // ASCII for 'A'
+  // bytes[1] = 66 // ASCII for 'B'
+  console.log(buffer);
+
+  // 使用 Uint16Array
+  var word = new Uint16Array(buffer) // views the buffer as an array with a single 16 bit integer
+  var value = (65 << 8) + 66 // we shift the 'A' into the upper 8 bit and add the 'B' as the lower 8 bit.
+  word[0] = value // write the 16 bit (2 bytes) into the typed array
+  console.log(buffer);
+
+  var blob = new Blob([buffer], { type: 'text/html' })
+  var dataUri = window.URL.createObjectURL(blob)
+  // var dataUri = HTMLMediaElement.srcObject(blob) 
+  console.log('dataUri===', dataUri);
+  window.open(dataUri); // Uint8Array 显示 AB；Uint16Array 显示 BA
+
+
+</script>
+</body>
+</html>
