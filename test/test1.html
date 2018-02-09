@@ -36,6 +36,15 @@
   <!-- </div> -->
   <!-- <img src="./test12.jpG" alt=""> -->
   <!-- <img src="./test.tif" alt=""> -->
+  <textarea name="text" id="textarea" cols="30" rows="10" value="哈哈哈">哈哈呵呵呵呵呵哈哈哈或</textarea>
+  <!-- <select name="" id=""></select> -->
+  <form id="myForm">
+    <fieldset>
+      <legend id="myLegend">Personalia:</legend>
+      用户名： <input type="text"><br>
+      Email： <input type="text">
+    </fieldset>
+  </form>
   <object width=800 height=1000 classid="CLSID:106E49CF-797A-11D2-81A2-00E02C015623" name="tiffObj"> 
   图片加载失败，请先下载图片控件<a href="alternatiff-1.8.exe">点击下载</a> 
     <param name="src" value="./test.tif"> 
@@ -46,6 +55,9 @@
 <script type="text/javascript">
   const oDiv = document.getElementById('data');
   console.log(oDiv.dataset.serverName);
+  window.setTimeout(() => {
+    document.getElementById('textarea').innerText = '嘿嘿嘿';
+  }, 1000);
 
   // const obj = {
   //   a: 'asd',
