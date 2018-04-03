@@ -54,9 +54,14 @@
 </body>
 <script type="text/javascript">
   const oDiv = document.getElementById('data');
+  const textArea = document.getElementById('textarea');
   console.log(oDiv.dataset.serverName);
+  console.log(textArea.value);
+  // textArea.value = 'hahaha';
+  console.log(textArea.value);
   window.setTimeout(() => {
-    document.getElementById('textarea').innerText = '嘿嘿嘿';
+    textArea.innerText = '嘿嘿嘿';
+    console.log(textArea.value);
   }, 1000);
 
   // const obj = {
